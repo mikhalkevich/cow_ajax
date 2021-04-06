@@ -1,4 +1,4 @@
-# Шаблонный проект html, css, JavaScript и jQuery, PHP, MySQL
+# Шаблонный проект Коровы, Ajax и jQuery, PHP, MySQL
 После установки вы получите html, css, jQuery шаблон сайта.
 Папка media\pages с примерами API JavaScript. Рассматриваются такие API, как
 - animation
@@ -20,11 +20,11 @@
 - git config --global user.name "John Doe" (один раз для того, чтобы представиться git-у)
 - git config --global user.email johndoe@example.com (один раз для того, чтобы представиться git-у)
 - git commit -m "first commit" (фиксация изменений)
-- git remote add origin https://github.com/mikhalkevich/cow.git (создание переменной)
+- git remote add origin https://github.com/mikhalkevich/cow_ajax.git (создание переменной)
 - git branch -M main (переключение в ветку main)
 - git push -u origin main (заливаем проект на удаленный репозиторий)
-- git clone https://github.com/mikhalkevich/cow.git (клонирование)
-- git pull https://github.com/mikhalkevich/cow.git ( забрать в существующий репозиторий)
+- git clone https://github.com/mikhalkevich/cow_ajax.git (клонирование)
+- git pull https://github.com/mikhalkevich/cow_ajax.git ( забрать в существующий репозиторий)
 
 # Команды git для постоянного пользования
 - git add *
