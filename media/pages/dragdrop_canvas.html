@@ -1,0 +1,65 @@
+<style>
+ #main {
+  display:flex;
+ }
+ #canvas {
+   border:solid 1px grey;
+  padding:10px;
+ }
+ section {
+
+  flex:1;  
+ }
+</style>
+<script>
+ //методы источника dragstart drag dragend
+ //методы целевого dragenter dragover drop dragleave
+var images, drop, canvas;
+function initiate(){
+ images = document.querySelectorAll('#picturesbox > img');
+ drop = document.getElementById('canvas');
+ canvas = drop.getContext('2d');
+ for(var i=0; i<images.length; i++){
+  images[i].addEventListener('dragstart', dragged)
+ } 
+ drop.addEventListener('dragenter', dragenter);
+ drop.addEventListener('dragover', dragover);
+ drop.addEventListener('drop', dropped); 
+}
+function dragged(e){ 
+ var elem = e.target;
+ console.log(elem, elem.getAttribute('id'));
+ e.dataTransfer.setData('Text', elem.getAttribute('id'));
+}
+function dropped(e){
+  e.preventDefault();
+  var id = e.dataTransfer.getData('Text');
+  console.log(id);
+  var elem = document.getElementById(id);
+  var posX = e.pageX - drop.offsetLeft;
+  var posY = e.pageY - drop.offsetTop;
+  canvas.drawImage(elem, posX, posY);
+} 
+function dragover(e){
+  e.preventDefault();
+}
+function dragenter(e){
+  e.preventDefault();
+}
+addEventListener('load', initiate); 
+</script> 
+<h1>Перетаскивание</h1>
+<div id="main">
+<section id="dropbox">
+ <canvas id="canvas" width="600px" height="600px"></canvas>
+</section>
+<section id="picturesbox">
+ <img src="../img/cow.png" id="image1" />
+ <img src="../img/pic1.jpg" id="image2" /> 
+ <img src="../img/pic5.jpg" id="image3" /> 
+ <img src="../img/cow2.png" id="image4" />
+</section>
+</div>
+
+
+ 

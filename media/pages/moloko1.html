@@ -1,0 +1,188 @@
+<style>
+	:valid{
+	 background:green;
+	}
+	input:invalid{
+	 background:red;
+	}
+	:required{
+	 border:solid 2px blue;
+	}
+	:optional{
+	border:solid 2px white;
+	}
+	:in-range{
+	 background:#ccc;
+	}
+	:out-of-range{
+	 background:#000;
+	}
+</style>
+<script>
+var name1, name2;
+function initiate(){
+	name1 = document.getElementById('firstname');
+	name2 = document.getElementById('secondname');
+	name1.addEventListener('input', validation);
+	name2.addEventListener('input', validation);
+	validation();
+}
+function validation(){
+ //console.log(name1.value, name2.value);
+ if(name1.value == '' && name2.value == ''){
+   name1.style.background = 'red';
+   name2.style.background = 'red';
+   name1.setCustomValidity('Заполните хотя бы одно поле');
+ }else{
+   name1.style.background = 'green';
+   name2.style.background = 'green';
+   name1.setCustomValidity('');
+ }
+}
+
+addEventListener('load', initiate);
+
+
+
+
+
+
+ function validateComment(input){
+ console.log(input.value.length)
+  if(input.value.length < 20){
+   //метод определения ошбики валидации
+   input.setCustomValidity("Вы ввели менее 20 символов");
+  }else{
+    input.setCustomValidity("");
+  }
+ }
+</script>
+<h1>Молоко</h1>
+<form>
+  <div class="form-group">
+    <label for="secondname">Secondname</label>
+    <input type="text" class="form-control" id="secondname" name="secondname" />
+  </div>
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input type="text" class="form-control" id="firstname" name="firstname" />
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>  
+<table class="table table-striped" contenteditable>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+<input type="text" name="name1" form="myform">
+<form action="/file.php" method="post" name="myform">
+  <datalist id="mydata">
+    <option value="1" label="Молоко" />
+	<option value="2" label="Сметана" />
+	<option value="3" label="Сыр" />
+	<option value="4" label="Творог" />
+	<option value="5" label="Простокваша" />
+	<option value="6" label="Масло" />
+  </datalist>
+    <div class="form-group">
+    <label for="pcode">Progress</label>
+    <progress value="75" min="0" max="100" class="form-control">3/4 complete</progress>
+  </div>
+  <div class="form-group">
+    <label for="pcode">Scale</label>
+    <meter class="form-control" min="0" max="100" value="99" low="40" hight="90" optimum="60">
+  </div>
+  <div class="form-group">
+    <label for="pcode">Post code</label>
+    <input type="text" class="form-control" pattern="[A-Z]{3}-[0-9]{3}" id="pcode" name="pcode">
+  </div>
+  <div class="form-group">
+    <label for="my_color">Color</label>
+    <input type="color" class="form-control" id="my_color" name="my_color" required>
+  </div>
+  <div class="form-group">
+    <label for="my_date">Date</label>
+    <input type="date" class="form-control" id="my_date" name="my_date" required>
+  </div>
+  <div class="form-group">
+    <label for="salary">Salary</label>
+    <input type="range" class="form-control" value="1000" id="salary" name="salary" required min="1000" max="5000" step="5">
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" class="form-control" id="age" name="age" required min="14" max="100" step="1">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="tel" class="form-control" id="phone" name="phone" required>
+  </div>
+  <div class="form-group">
+    <label for="site">URL</label>
+    <input type="url" class="form-control" id="site" name="site" required multiple>
+  </div>
+  <div class="form-group">
+    <label for="poisk">Search</label>
+    <input type="search" class="form-control" id="poisk" name="poisk" list="mydata" autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" required autocomplete="off">
+  </div>
+  <div class="form-group">
+    <label for="year">Year select</label>
+    <select class="form-control" id="year" name="year">
+      <option>2021</option>
+      <option>2020</option>
+      <option>2019</option>
+      <option>2018</option>
+      <option>2017</option>
+    </select>
+  </div> 
+  <div class="form-group">
+    <label for="body">Когда вы осознали, что хотите стать web-мастером?</label>
+    <textarea class="form-control" id="body" rows="3" name="body" oninput="validateComment(this)"></textarea>
+  </div>
+   <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+    <label class="form-check-label" for="remember">Check me out</label>
+  </div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+  <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+</div>
+  <button type="submit" class="btn btn-primary">Primary</button>
+  
+</form>

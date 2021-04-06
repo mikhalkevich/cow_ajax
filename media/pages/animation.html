@@ -1,0 +1,57 @@
+<style>
+ #canvas {
+  border:solid 1px grey;
+  box-shadow:1px 1px 1px black;
+  background:url("../img/fon.jpg");
+ }
+</style>
+<script>
+var canvas; 
+var y = selfRandom(0,800);
+var cors = [];
+for(v=0;v<20;v++){
+cors.push({x:selfRandom(0,900),y:selfRandom(0,800)});
+}
+console.log(cors);
+function initiate(){
+  var elem = document.getElementById('canvas');
+  canvas = elem.getContext('2d'); 
+	//img = document.createElement('img'); // $('<img>')
+	//	img.setAttribute('src', '../img/snowflake.png');
+	//	img.addEventListener("load", function(){
+	//	 canvas.drawImage(img, 0, 0);
+	//	 console.log('load');
+	//	});  
+  plan(); 
+}
+function plan(){
+canvas.clearRect(0,0,900,800);
+	canvas.fillStyle = "white";
+for(a=0; a<cors.length; a++){
+console.log(cors);
+canvas.fillRect(cors[a].x,cors[a].y,5,5);
+	cors[a].y += 1; 
+	  if(cors[a].y > 800){
+	    cors[a].y = 0;
+	  }
+}
+
+
+
+	 
+ 
+	  requestAnimationFrame(plan);
+}
+function selfRandom(min, max){
+  return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+addEventListener('load',initiate);
+</script> 
+<h1>Холст</h1>
+<section id="canvasbox">
+ <canvas id="canvas" width="900" height="800"></canvas>
+</section>
+
+
+ 

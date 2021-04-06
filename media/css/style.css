@@ -1,0 +1,93 @@
+body {
+    margin:0; 
+    padding:0; /* обнуление отступов */
+}
+#header {
+    background: url('../img/bg.jpg');
+    height:200px;
+}
+#logotext {
+    float:right;
+	margin-top:20px;
+    margin-right:20px;
+    color:whitesmoke;
+    text-shadow: 1px 1px 1px black;
+    background:olive;
+    border-radius: 6px;
+    padding:5px;
+}
+#logo {
+ float:left;
+}
+#auth {
+ float:right;
+ margin-right:20px;
+}
+.menu {
+    display: flex;
+    width:100%;
+}
+.menu a{
+    flex:1;
+    text-decoration: none;
+    color:olive;
+    background: whitesmoke;
+    text-align: center;
+    padding:10px 0;
+    border-right:solid 1px olive;
+}
+.menu a:hover {
+    background-color: gold;
+    color:brown;
+}
+#content {
+    margin:20px;
+}
+#footer{
+    padding:100px 0;
+    text-align: center;
+    background: cadetblue;
+}
+.modal-window{
+	position:fixed;
+	top:100px;
+	left:50%;
+	width:600px;
+	margin-left:-300px;
+	background:white;
+	padding:20px;
+	border:solid 1px olive;
+	box-shadow:1px 1px 1px black;
+	border-radius:6px;
+	z-index:99;
+}
+.modal-close{
+	position:absolute;
+	top:-1px;
+	right:3px;
+	text-decoration:none;
+	color:red;
+	font-size:22px;
+	margin:1px;
+	padding:1px;
+}
+.modal-close:before{
+	position:relative;
+	top:-3px;
+	content:"Close";
+	font-size:13px;
+}
+#overlay {
+	background:black;
+	opacity:0.7;
+	position:fixed;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+}
+#content-body p{
+	background:olive;
+	color:red;
+	padding:10px;
+}

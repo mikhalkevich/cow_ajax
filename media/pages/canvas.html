@@ -1,0 +1,93 @@
+<style>
+ #canvas {
+  border:solid 1px grey;
+  box-shadow:1px 1px 1px black;
+ }
+</style>
+<script>
+var canvas, img;
+ function initiate(){
+  var elem = document.getElementById('canvas');
+  canvas = elem.getContext('2d');
+  
+    
+    canvas.strokeStyle = '#990000';
+	var grad = canvas.createLinearGradient(0,0,500,300);
+	grad.addColorStop(0.2, '#99FFAA');
+	grad.addColorStop(0.5, '#00AAFF');
+	grad.addColorStop(0.8, '#000000');
+	canvas.fillStyle = grad;
+	canvas.save();
+	canvas.strokeRect(100,100, 120,120);
+	canvas.fillRect(110,110, 100,100);
+	canvas.clearRect(120,120, 80,80);
+	canvas.beginPath();
+	canvas.moveTo(300,100);
+	canvas.lineTo(400, 200);
+	canvas.lineTo(300, 200);
+	canvas.fill();
+	for(var f=0; f<300; f= f+10){
+	  canvas.moveTo(0, f);
+	  canvas.lineTo(500, f);
+	}
+	var radians = Math.PI / 180 * 45;
+	canvas.arc(100,100,50,0,radians,false);
+	canvas.quadraticCurveTo(100, 50, 50,200);
+	//canvas.bezierCurveTo(200,10,300,10,250,200);
+	canvas.stroke();
+	canvas.beginPath();
+	canvas.lineWidth = 3;
+	canvas.lineJoin = "miter";
+	canvas.arc(200, 150, 50, 0, Math.PI*2, false);
+	canvas.moveTo(230,150);
+	canvas.arc(200, 150, 30, 0, Math.PI, false);
+	canvas.moveTo(195,135);
+	canvas.lineTo(215,155);
+	canvas.lineTo(195,155);
+	canvas.stroke();
+	canvas.font = "bold 24px verdana, sans-serif";
+	var text = "Hello World!";
+	var size = canvas.measureText(text);
+	canvas.strokeRect(50,50, size.width,-24);
+	canvas.fillText(text, 50, 50);
+	canvas.translate(50,70);
+	canvas.rotate(Math.PI/180*45);
+	canvas.fillText(text, 50, 50);
+	canvas.scale(2,2);
+	canvas.fillText(text, 50, 50);
+	canvas.fillRect(120,-160,50,50);
+	canvas.restore();
+	canvas.fillRect(20,60,50,50);
+	img = document.createElement('img'); // $('<img>')
+		img.setAttribute('src', '../img/cow.png');
+		img.addEventListener("load", modimage2)
+ }
+ function modimage(){
+	canvas.drawImage(img, 0, 0);
+	var info = canvas.getImageData(0, 0, 100, 100);
+	var pos;
+	for(var x=0; x<100; x++){
+	  for(var y=0; y<100; y++){
+	  pos = (info.width*4*y) + (x*4);
+	   info.data[pos] = 255-info.data[pos];
+	   info.data[pos+1] = 255-info.data[pos+1];
+	   info.data[pos+2] = 255-info.data[pos+2];
+	   console.log(info.data[pos],info.data[pos+1],info.data[pos+2]);
+	  }
+	}
+	canvas.putImageData(info,0,0);
+ }
+ function modimage2(){
+  var pattern = canvas.createPattern(img, 'repeat');
+  canvas.fillStyle = pattern;
+  canvas.fillRect(0,0,500,100);
+ }
+ addEventListener("load", initiate);
+</script>
+<h1>Холст</h1>
+<section id="canvasbox">
+ <canvas id="canvas" width="500" height="300"></canvas>
+</section>
+
+
+ 
